@@ -78,8 +78,8 @@ func run(dsn string) {
 	}
 	defer db.Close()
 	//query to be executed to transfer the data
-	query := `copy into 's3://logtergolang/a.csv'
-	from "GODATAPIPELINE"."PUBLIC"."TEST"
+	query := `copy into 's3://logtergolang/a.parquet'
+	from GODATAPIPELINE.PUBLIC.s3_int_stream
 	storage_integration = s3_int`
 	fmt.Printf("Executing a query. It may take long. You may stop by Ctrl+C.\n")
 	//query executing
